@@ -8,5 +8,6 @@ export const envs = {
   DATABASE_URL: get('DATABASE_URL').required().asString(),
   LOGINSITE: get('LOGINSITE').required().asString(),
   SECRETKEYAPTP: get('SECRETKEYAPTP').required().asString(),
+  RETURNURL: get('RETURNURL').required().asString(),
  
 }

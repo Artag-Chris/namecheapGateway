@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { getAuth, sumar24Horas } from '../config/functions';
 import { Amount, Payment } from '../config/interfaces';
+import { envs } from '../config/envs';
 
 
 class AptpService extends PrismaClient {
@@ -36,12 +37,11 @@ class AptpService extends PrismaClient {
         "locale": "es_CO",
         auth: auth,
         payment,
-        "expiration": fechaSumada,//debere crear una forma de expiracion
-        "returnUrl": "https://artagshop.com",//url de retorno sera una variable de entorno
-        ipAddress, //ip del usuario que realiza el pago
+        "expiration": fechaSumada,
+        "returnUrl": `${envs.RETURNURL}`,
+        ipAddress,
         userAgent 
-        //"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-        // podria ser el nombre de la persona que hace la transacion
+       
     }
     console.log(sendPayload);
     //despues de enviar el payload se retornara una url processUrl
