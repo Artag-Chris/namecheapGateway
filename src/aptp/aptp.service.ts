@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { getAuth } from '../config/functions';
 
 
 class AptpService extends PrismaClient {
@@ -17,8 +18,9 @@ class AptpService extends PrismaClient {
    ///se cambiara los metodos 
   async onLogin(payload: any) {
     
-    console.log(payload);
-    
+    const auth = getAuth();
+    console.log(auth);
+    return auth;
   }
 
  
