@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { getAuth } from '../config/functions';
+import { Payment } from '../config/interfaces';
 
 
 class AptpService extends PrismaClient {
@@ -17,10 +18,31 @@ class AptpService extends PrismaClient {
   
    ///se cambiara los metodos 
   async onLogin(payload: any) {
-    
+    const {reference, description, amount} = payload;
+
+    //se enviara un payload a una url y esperaremos de respuesta una url
     const auth = getAuth();
-    console.log(auth);
-    return auth;
+    const payment:Payment = {
+
+    reference,
+    description,
+    amount
+
+    }
+   
+    const sendPayload = {
+        "locale": "es_CO",
+        auth: auth,
+        payment,
+        "expiration": "2021-12-30T00:00:00-05:00",
+        "returnUrl": "https://artagshop.com",
+        "ipAddress": "127.0.0.1",
+        "userAgent": "Artag Shop User Sandbox"
+    }
+    console.log(sendPayload);
+    //despues de enviar el payload se retornara una url processUrl
+    //tambien regresa un requestId este tambien se manda al front
+    return sendPayload;
   }
 
  
