@@ -18,7 +18,7 @@ class AptpService extends PrismaClient {
   
    ///se cambiara los metodos 
   async onLogin(payload: any) {
-    const {reference, description, amount} = payload;
+    const {reference, description, amount,ipAddress } = payload;
 
     //se enviara un payload a una url y esperaremos de respuesta una url
     const auth = getAuth();
@@ -34,14 +34,15 @@ class AptpService extends PrismaClient {
         "locale": "es_CO",
         auth: auth,
         payment,
-        "expiration": "2021-12-30T00:00:00-05:00",
+        "expiration": "2021-12-30T00:00:00-05:00",//debere crear una forma de expiracion
         "returnUrl": "https://artagshop.com",
-        "ipAddress": "127.0.0.1",
+        ipAddress, //ip del usuario que realiza el pago
         "userAgent": "Artag Shop User Sandbox"
     }
     console.log(sendPayload);
     //despues de enviar el payload se retornara una url processUrl
     //tambien regresa un requestId este tambien se manda al front
+    //ya esta la interface de la respuesta de a place to pay con la url
     return sendPayload;
   }
 
