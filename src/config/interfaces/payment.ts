@@ -2,11 +2,11 @@ export interface Payment {
 
 "reference": string,
 "description": string,
-"amount": amount
+"amount": Amount
     
 }
 
-interface amount {
+export interface Amount {
 "currency": string,//deberia ser cop
 "total": number
 }

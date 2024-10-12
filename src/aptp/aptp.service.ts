@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { getAuth } from '../config/functions';
-import { Payment } from '../config/interfaces';
+import { getAuth, sumar24Horas } from '../config/functions';
+import { Amount, Payment } from '../config/interfaces';
 
 
 class AptpService extends PrismaClient {
@@ -17,11 +17,13 @@ class AptpService extends PrismaClient {
   }
   
    ///se cambiara los metodos 
-  async onLogin(payload: any) {
-    const {reference, description, amount,ipAddress } = payload;
+  async onRequestLogin(reference: string, description: string, amount:Amount,ipAddress:string,userAgent:string) {
+   
 
     //se enviara un payload a una url y esperaremos de respuesta una url
     const auth = getAuth();
+    const fechaSumada = sumar24Horas();
+
     const payment:Payment = {
 
     reference,
@@ -34,16 +36,23 @@ class AptpService extends PrismaClient {
         "locale": "es_CO",
         auth: auth,
         payment,
-        "expiration": "2021-12-30T00:00:00-05:00",//debere crear una forma de expiracion
-        "returnUrl": "https://artagshop.com",
+        "expiration": fechaSumada,//debere crear una forma de expiracion
+        "returnUrl": "https://artagshop.com",//url de retorno sera una variable de entorno
         ipAddress, //ip del usuario que realiza el pago
-        "userAgent": "Artag Shop User Sandbox"
+        userAgent 
+        //"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        // podria ser el nombre de la persona que hace la transacion
     }
     console.log(sendPayload);
     //despues de enviar el payload se retornara una url processUrl
     //tambien regresa un requestId este tambien se manda al front
     //ya esta la interface de la respuesta de a place to pay con la url
+   // res.status(302).redirect(url);
     return sendPayload;
+  }
+
+  async onRequestConsult(payload: any) {
+      console.log(payload);
   }
 
  

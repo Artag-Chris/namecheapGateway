@@ -12,7 +12,8 @@ export class AptpRoutes {
     //aqui iran las rutas de a place to pay sus metodos son todos post
 
     router.post(`/login`,aptpController.onLogin);
-    //router.get(`/getallmanicurist`,prismaController.onGetManicurist);
+  
+    router.post(`consultservice`,aptpController.onConsult);
 
     
 

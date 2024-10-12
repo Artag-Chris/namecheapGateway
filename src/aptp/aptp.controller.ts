@@ -11,8 +11,15 @@ export class AptpController {
     
     onLogin= async(req:Request, res:Response) =>{
         const payload= req.body;
+        const {reference, description, amount,ipAddress, userAgent } = payload;
+        const userAgentValue = userAgent !== null && userAgent !== undefined ? userAgent : 'Desconocido';
+        const response =await this.aptpService.onRequestLogin(reference, description, amount,ipAddress, userAgentValue);
+        res.status(200).send(response);
+    }
+    onConsult= async(req:Request, res:Response) =>{
+        const payload= req.body;
        
-        const response =await this.aptpService.onLogin(payload);
+        const response =await this.aptpService.onRequestConsult(payload);
         res.status(200).send(response);
     }
   
