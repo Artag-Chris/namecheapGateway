@@ -11,7 +11,7 @@ export class AptpRoutes {
 
     //aqui iran las rutas de a place to pay sus metodos son todos post
 
-    router.post(`/login`,aptpController.onLogin);
+    router.post(`/simplelogin`,aptpController.onLogin);
   
     router.post(`consultservice`,aptpController.onConsult);
 
@@ -19,4 +19,5 @@ export class AptpRoutes {
 
 return router;
  }
+ 
 }
