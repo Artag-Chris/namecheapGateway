@@ -47,8 +47,9 @@ class AptpService extends PrismaClient {
     //despues de enviar el payload se retornara una url processUrl
     //tambien regresa un requestId este tambien se manda al front
     //ya esta la interface de la respuesta de a place to pay con la url
-   // res.status(302).redirect(url);
-    return sendPayload;
+    
+   
+    return {paymentUrl: 'https://google.com'};
   }
 
   async onRequestConsult(payload: any) {

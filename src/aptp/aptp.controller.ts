@@ -13,7 +13,8 @@ export class AptpController {
         const payload= req.body;
         const {reference, description, amount,ipAddress, userAgent } = payload;
         const userAgentValue = userAgent !== null && userAgent !== undefined ? userAgent : 'Desconocido';
-        const response =await this.aptpService.onRequestLogin(reference, description, amount,ipAddress, userAgentValue);
+        const response =await this.aptpService.onRequestLogin(reference, description, amount,ipAddress, userAgentValue,);
+        
         res.status(200).send(response);
     }
     onConsult= async(req:Request, res:Response) =>{
