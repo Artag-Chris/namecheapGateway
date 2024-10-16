@@ -2,7 +2,7 @@ import { envs } from './config/envs';
 import { AppRoutes } from './presentation/routes';
 import { Server } from './presentation/server';
 import { createServer } from 'http';
-
+import { WssService } from './notifications/wss.service';
 
 
 (async()=> {
@@ -16,7 +16,7 @@ function main() {
     port: envs.PORT,
   });
   const httpServer= createServer(server.app);
-
+  WssService.initWss({server: httpServer});
   
 server.setRoutes(AppRoutes.routes);
 
