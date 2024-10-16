@@ -6,6 +6,7 @@ interface Options {
   server: Server;
   path?: string; // ws
 }
+//aqui se colocora las notificaciones de webhook
 
 export class WssService {
   private static _instance: WssService;

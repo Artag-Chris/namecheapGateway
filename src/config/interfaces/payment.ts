@@ -1,5 +1,5 @@
 export interface Payment {
-
+"paymentMethod": string,
 "reference": string,
 "description": string,
 "amount": Amount

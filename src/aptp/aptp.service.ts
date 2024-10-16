@@ -26,7 +26,7 @@ class AptpService extends PrismaClient {
     const fechaSumada = sumar24Horas();
 
     const payment:Payment = {
-
+    "paymentMethod": "pse", //aqui se cambiara el metodo de pago
     reference,
     description,
     amount
