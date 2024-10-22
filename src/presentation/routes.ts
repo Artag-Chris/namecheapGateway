@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { AptpRoutes } from '../aptp/aptp.routes';
+import { DecevalGatewayRoutes } from '../deceval/decevalgateway.routes';
+
 
 
 export class AppRoutes {
@@ -8,7 +9,7 @@ export class AppRoutes {
 
     
    
-    router.use(`/aptp/cheackout`, AptpRoutes.routes);
+    router.use(`/gateway/deceval`, DecevalGatewayRoutes.routes );
 
     return router;
   }

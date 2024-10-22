@@ -25,7 +25,7 @@ export class Server {
   private configure() {
     
     //* Middlewares aqui se configuran los middlewares del server
-     
+    //* aqui se configurara el middleware de express para los archivos  
     this.app.use(cors());
     this.app.use(express.json({ limit: '50mb' }));
     this.app.use(express.urlencoded({ limit: '50mb', extended: true }));
@@ -36,8 +36,8 @@ export class Server {
     //* Routes
    // this.app.use(this.routes);
 
-    //* SPA /^\/(?!api).*/  <== Únicamente si no empieza con la palabra api
-    this.app.get(/^\/(?!aptp).*/, (req, res) => {
+    //* SPA /^\/(?!gateway).*/  <== Únicamente si no empieza con la palabra api
+    this.app.get(/^\/(?!gateway).*/, (req, res) => {
       const indexPath = path.join(
         __dirname + `../../../${this.publicPath}/index.html`
       );
