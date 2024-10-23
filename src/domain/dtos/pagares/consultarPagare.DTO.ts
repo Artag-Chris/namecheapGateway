@@ -8,6 +8,8 @@ export class ConsultPaymentDTO {
     ){}
   
   static create(object:{[key:string]:any}):[string?,ConsultPaymentDTO?] {
+
+    if(!object) return ["El Objeto es requerido"];
     const {codigoDeceval,idEstadoPagare,idTipoIdentificacionFirmante,numIdentificacionFirmante,numPagareEntidad} = object
 
     if(!codigoDeceval) return ["El Codigo Deceval es requerido"];

@@ -17,9 +17,9 @@ export class DecevalGatewayRoutes {
 
     router.post(`/terminatePayment`, );
 
-    router.post(`/retrieveCertificates`, );
+    router.post(`/retrieveCertificates`,decevalgatewayController.retrieveCertificate );
 
-    router.post(`/consultservice`, decevalgatewayController.onConsult);
+    router.post(`/consultservice`, );
 
     return router;
   }

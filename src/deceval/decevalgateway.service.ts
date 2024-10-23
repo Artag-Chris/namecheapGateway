@@ -1,4 +1,6 @@
 import XMLAdapter from "../config/adapters/js2xmlparser.adapter";
+import { ConsultPaymentDTO } from "../domain";
+
 
 class DecevalGatewayService {
   constructor() {}
@@ -10,8 +12,12 @@ class DecevalGatewayService {
     return xml;
   }
 
-  async onRequestConsult(payload: any) {
-    console.log(payload);
+  async retrieveCertificate(consultPaymentDTO:ConsultPaymentDTO ) {
+ 
+    const xml = XMLAdapter.jsonToXml("consultaPagareServiceDTO", consultPaymentDTO);
+    //el xml se envia al proxy
+    console.log(xml);
+    return xml;
   }
 
   async onSignPaymentAgreements(payload: any) {
