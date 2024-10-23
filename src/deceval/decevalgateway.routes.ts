@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { DecevalGatewayController } from "./decevalgateway.controller";
+import {DecevalGatewayService} from "./decevalgateway.service";
 
 export class DecevalGatewayRoutes {
   static get routes() {
     const router = Router();
-
-    const decevalgatewayController = new DecevalGatewayController();
+    const decevalGatewayService = new DecevalGatewayService();
+    const decevalgatewayController = new DecevalGatewayController(decevalGatewayService);
 
     //aqui iran las rutas de los servicios que usaremos de deceval
 

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import DecevalGatewayService from "./decevalgateway.service";
+import {DecevalGatewayService }from "./decevalgateway.service";
 import { ConsultPaymentDTO, CustomError } from "../domain";
 
 export class DecevalGatewayController {
@@ -23,13 +23,12 @@ export class DecevalGatewayController {
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
-  retrieveCertificate= async (req: Request, res: Response) => {
-    const [error, consultPaymentDTO] = ConsultPaymentDTO.create(req.body);
-    if (error) return res.status(400).json({ error });
-    
-
-    this.decevalGatewayService
-      .retrieveCertificate(consultPaymentDTO!)
+  
+  retrieveCertificate = async(req: Request, res: Response) => {
+    const payload = req.body;
+  
+    await this.decevalGatewayService
+      .retrieveCertificate(payload!)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
