@@ -1,7 +1,7 @@
 export class HeaderDTO {
     constructor(
     public readonly codigoDepositante: number,
-    public readonly fecha:             Date,
+    public readonly fecha:             string,//TODO:cambiado de Date por pruebas
     public readonly hora:              string,
     public readonly usuario:           string, //que usuario si el del front o server?
     ){}

@@ -16,9 +16,11 @@ export class DecevalGatewayController {
   };
   //zona girador
   createGirador = async (req: Request, res: Response) => {
-    const payload = req.body;
+   const payload = req.body;
+   //console.log(payload);
+    const { header, crearGiradorDTO } = payload;
     this.decevalGatewayService
-      .crearGirador(payload)
+      .crearGirador(header,crearGiradorDTO)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
