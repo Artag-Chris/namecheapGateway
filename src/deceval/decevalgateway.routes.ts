@@ -20,6 +20,7 @@ export class DecevalGatewayRoutes {
     router.post(`/terminatePayment`, );
 
     router.post(`/retrieveCertificates`,decevalgatewayController.retrieveCertificate );
+    router.post('/infocertificate',decevalgatewayController.infoCertificate );
 
     router.post(`/consultservice`, );
 

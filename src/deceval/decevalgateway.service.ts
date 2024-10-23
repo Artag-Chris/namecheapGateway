@@ -30,6 +30,15 @@ export class DecevalGatewayService {
     console.log(xml);
     return xml;
   }
+  async infoCertificate(payload: any) {
+    const [error, consultPayment] = ConsultPaymentDTO.create(payload);
+    if (error) return "error faltan campos";
+    
+    const xml = XMLAdapter.jsonToXml("consultaPagareServiceDTO", consultPayment);
+    //el xml se envia al proxy
+    console.log(xml);
+    return xml;
+  }
 
   async onSignPaymentAgreements(payload: any) {
     console.log(payload);
