@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {DecevalGatewayService }from "./decevalgateway.service";
+import { DecevalGatewayService } from "./decevalgateway.service";
 import { ConsultPaymentDTO, CustomError } from "../domain";
 
 export class DecevalGatewayController {
@@ -14,29 +14,33 @@ export class DecevalGatewayController {
 
     return res.status(500).json({ error: `Internal Server Error` });
   };
-
+  //zona girador
   createGirador = async (req: Request, res: Response) => {
     const payload = req.body;
-
     this.decevalGatewayService
       .crearGirador(payload)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
-  
-  retrieveCertificate = async(req: Request, res: Response) => {
+  consultGirador = async (req: Request, res: Response) => {
     const payload = req.body;
-  
+    await this.decevalGatewayService
+      .consultGirador(payload!)
+      .then((result) => res.json(result))
+      .catch((error) => this.handleError(error, res));
+  };
+  //zona certificado
+  retrieveCertificate = async (req: Request, res: Response) => {
+    const payload = req.body;
     await this.decevalGatewayService
       .retrieveCertificate(payload!)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
-
+  //zona acuerdos de pago
   signPaymentAgreements = async (req: Request, res: Response) => {
     const payload = req.body;
-
-    this.decevalGatewayService
+    await this.decevalGatewayService
       .onSignPaymentAgreements(payload)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
