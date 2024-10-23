@@ -9,7 +9,15 @@ export class DecevalGatewayRoutes {
 
     //aqui iran las rutas de los servicios que usaremos de deceval
 
-    router.post(`/pagare`, decevalgatewayController.signPaymentAgreement);
+    router.post(`/creargirador`, decevalgatewayController.createGirador);
+
+    router.post(`/signpayment`, decevalgatewayController.signPaymentAgreements);
+
+    router.post(`/blindsing`, );
+
+    router.post(`/terminatePayment`, );
+
+    router.post(`/retrieveCertificates`, );
 
     router.post(`/consultservice`, decevalgatewayController.onConsult);
 

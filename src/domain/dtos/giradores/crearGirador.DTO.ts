@@ -67,6 +67,8 @@ export class CrearGiradorDTO {
     //   fkIdTipoDocumento,
     } = object;
 
+    //TODO: hay que colocar las validaciones
+
     return [
       undefined,
       new CrearGiradorDTO(

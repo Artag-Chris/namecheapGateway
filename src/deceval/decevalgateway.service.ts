@@ -4,13 +4,17 @@ class DecevalGatewayService {
   constructor() {}
 
   ///se cambiara los metodos
-  async signPaymentAgreement(payload: any) {
+  async crearGirador(payload: any) {
     const xml = XMLAdapter.jsonToXml("Pagare", payload);
     console.log(xml);
     return xml;
   }
 
   async onRequestConsult(payload: any) {
+    console.log(payload);
+  }
+
+  async onSignPaymentAgreements(payload: any) {
     console.log(payload);
   }
 }
