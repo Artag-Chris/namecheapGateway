@@ -6,24 +6,14 @@ export class DecevalGatewayService {
   constructor() {}
 
   ///se cambiara los metodos
-  async crearGirador(header: HeaderDTO,crearGiradorDTO: CrearGiradorDTO): Promise<string> {
-    
-    const headerdto = HeaderDTO.create(header);
- //console.log(header);
-    const  giradordto = CrearGiradorDTO.create(crearGiradorDTO);
-   
-   //console.log(creargirador);
-  
-   //console.log(headergirador);
-   
-    // const [error, solicitudCrearGirador] = SolicitudCrearGiradorDTO.create({header,crearGiradorDTO});
-    // console.log(solicitudCrearGirador)
-    // if (error) return "error faltan campos";
-    const xml = XMLAdapter.jsonToXml("solicitudCrearGiradorServiceDTO", {header,crearGiradorDTO});
-    console.log(xml);
+  async crearGirador(headerDTO: HeaderDTO,crearGiradorDTO: CrearGiradorDTO): Promise<string> {
+      
+     const [error, solicitudCrearGirador] = SolicitudCrearGiradorDTO.create({headerDTO,crearGiradorDTO});
+     if (error) return "error faltan campos";
+    const xml = XMLAdapter.jsonToXml("solicitudCrearGiradorServiceDTO", solicitudCrearGirador);
+    console.log(xml);// se debera mandar este objeto al proxy y esperar la respuesta
     return xml;
     
-   return "ok";
   }
   async consultGirador(consultgiradorDTO: ConsultGiradorDTO): Promise<string> {
     const [error, consultGirador] = ConsultGiradorDTO.create(consultgiradorDTO);

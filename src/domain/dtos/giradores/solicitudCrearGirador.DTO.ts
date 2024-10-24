@@ -1,4 +1,4 @@
-import { CrearGiradorDTO, HeaderDTO } from "../..";
+import { CrearGiradorDTO, header, HeaderDTO } from "../..";
 
 export class SolicitudCrearGiradorDTO {
 
@@ -9,8 +9,8 @@ export class SolicitudCrearGiradorDTO {
 
     static create(object:{[key:string]:any}): [string?,SolicitudCrearGiradorDTO?]{
         const {headerDTO,crearGiradorDTO} = object;
-        //console.log(object);
-        if(!headerDTO) return ["El Header es requerido"];
+        
+        if(!header) return ["El Header es requerido"];
         if(!crearGiradorDTO) return ["El Crear Girador es requerido"];
         
         return [undefined,new SolicitudCrearGiradorDTO(headerDTO,crearGiradorDTO)];
