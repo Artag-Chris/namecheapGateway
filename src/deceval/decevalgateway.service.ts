@@ -1,10 +1,8 @@
 import XMLAdapter from "../config/adapters/js2xmlparser.adapter";
-import { Request, Response } from "express";
 import {
-  ConsultGiradorDTO,
+  ConsultaGiradorServiceDTO,
   ConsultPaymentDTO,
   CrearGiradorDTO,
-  CustomError,
   HeaderDTO,
 } from "../domain";
 import { SolicitudCrearGiradorDTO } from "../domain/dtos/giradores/solicitudCrearGirador.DTO";
@@ -33,8 +31,8 @@ export class DecevalGatewayService {
     console.log(xml); // se debera mandar este objeto al proxy y esperar la respuesta
     return xml;
   }
-  async consultGirador(consultgiradorDTO: ConsultGiradorDTO): Promise<string> {
-    const [error, consultGirador] = ConsultGiradorDTO.create(consultgiradorDTO);
+  async consultGirador(consultgiradorDTO: ConsultaGiradorServiceDTO): Promise<string> {
+    const [error, consultGirador] = ConsultaGiradorServiceDTO.create(consultgiradorDTO);
     if (error) return `error faltan campos ${error}`;
 
     const xml = XMLAdapter.jsonToXml(

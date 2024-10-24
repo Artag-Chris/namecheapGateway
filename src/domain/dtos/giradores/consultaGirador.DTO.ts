@@ -1,4 +1,4 @@
-export class ConsultGiradorDTO {
+export class ConsultaGiradorServiceDTO {
   constructor(
     public readonly giradorCuenta: number,
     public readonly giradorNumId: string,
@@ -8,7 +8,7 @@ export class ConsultGiradorDTO {
   ) {}
 
 
-static create(object:{[key:string]:any}): [string?,ConsultGiradorDTO?] {
+static create(object:{[key:string]:any}): [string?,ConsultaGiradorServiceDTO?] {
 const {
     
     giradorCuenta,
@@ -25,7 +25,7 @@ if(!giradorTipoId) return ["El Tipo Id Girador es requerido"];
 if(!idPersonaRepresentada) return ["El Id Persona Representada es requerido"];
 if(!idRol) return ["El Id Rol es requerido"];
 
-return [undefined,new ConsultGiradorDTO(giradorCuenta,giradorNumId,giradorTipoId,idPersonaRepresentada,idRol)]
+return [undefined,new ConsultaGiradorServiceDTO(giradorCuenta,giradorNumId,giradorTipoId,idPersonaRepresentada,idRol)]
 
 }
 
