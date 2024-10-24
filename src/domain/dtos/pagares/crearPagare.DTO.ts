@@ -1,25 +1,25 @@
-import { ConsultaGiradorServiceDTO } from "../..";
-import { ArchivoAdjuntoDTO } from "../archivos/archivoAdjunto.DTO";
+//import { ConsultaGiradorServiceDTO } from "../..";
+//import { ArchivoAdjuntoDTO } from "../archivos/archivoAdjunto.DTO";
 
 export class CrearPagareDTO {
   constructor(
-    apoderadoCuenta: number,
-    apoderadoNumId: string,
-    apoderadoTipoId: number,
-    cuenta: string,
-    departamento: string,
-    empresaOtorgante: string,
-    fechaGrabacionPagare: Date,
-    idDocumentoPagare: number,
-    nitEmisor: string,
-    numPagareEntidad: string,
-    numReferencia: string,
-    otorganteNumId: string,
-    otorganteTipoId: number,
-    pais: string,
-    regional: string,
-    textoAdicional: string,
-    tipoPagare: number
+   public readonly apoderadoCuenta: number,
+   public readonly apoderadoNumId: string,
+   public readonly apoderadoTipoId: number,
+   public readonly cuenta: string,
+   public readonly departamento: string,
+   public readonly empresaOtorgante: string,
+   public readonly fechaGrabacionPagare: Date,
+   public readonly idDocumentoPagare: number,
+   public readonly nitEmisor: string,
+   public readonly numPagareEntidad: string,
+   public readonly numReferencia: string,
+   public readonly otorganteNumId: string,
+   public readonly otorganteTipoId: number,
+   public readonly pais: string,
+   public readonly regional: string,
+   public readonly textoAdicional: string,
+   public readonly tipoPagare: number
   ) {}
 
   static create(object: { [key: string]: any }): [string?, CrearPagareDTO?] {
