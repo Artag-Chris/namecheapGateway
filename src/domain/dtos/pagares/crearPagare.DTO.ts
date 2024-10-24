@@ -9,7 +9,7 @@ export class CrearPagareDTO {
    public readonly cuenta: string,
    public readonly departamento: string,
    public readonly empresaOtorgante: string,
-   public readonly fechaGrabacionPagare: Date,
+   public readonly fechaGrabacionPagare: string,// se cambia de Date a string
    public readonly idDocumentoPagare: number,
    public readonly nitEmisor: string,
    public readonly numPagareEntidad: string,

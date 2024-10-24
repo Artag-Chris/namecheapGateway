@@ -8,10 +8,10 @@ export class SolicitudCrearPagareDTO {
     ) {}
 
     static create(object: {[key: string]: any}): [string?, SolicitudCrearPagareDTO?] {
-        const { headerDTO, crearPagareDTO } = object;
-
-        if (!headerDTO) return ["El Header es requerido"];
+        const { header, crearPagareDTO } = object;
+    console.log(object);
+        if (!header) return ["El Header es requerido"];
         if (!crearPagareDTO) return ["El Crear Pagare es requerido"];
-        return [undefined, new SolicitudCrearPagareDTO(headerDTO, [crearPagareDTO])];
+        return [undefined, new SolicitudCrearPagareDTO(header, [crearPagareDTO])];
     }
 }

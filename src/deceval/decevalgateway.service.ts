@@ -6,6 +6,7 @@ import {
   HeaderDTO,
 } from "../domain";
 import { SolicitudCrearGiradorDTO } from "../domain/dtos/giradores/solicitudCrearGirador.DTO";
+import { SolicitudCrearPagareDTO } from "../domain/dtos/pagares/solicitudCrearPagare.DTO";
 
 export class DecevalGatewayService {
   constructor() {}
@@ -60,7 +61,7 @@ export class DecevalGatewayService {
   }
   async infoCertificate(payload: any) {
     const [error, consultPayment] = ConsultPaymentDTO.create(payload);
-    if (error) return "error faltan campos";
+    if (error) return `error faltan campos ${error}`;
 
     const xml = XMLAdapter.jsonToXml(
       "consultaPagareServiceDTO",
@@ -72,6 +73,15 @@ export class DecevalGatewayService {
   }
 
   async onSignPaymentAgreements(payload: any) {
-    console.log(payload);
+    const [error, crearPagare] = SolicitudCrearPagareDTO.create(payload);
+    if (error) return `error faltan campos ${error}`;
+
+    const xml = XMLAdapter.jsonToXml(
+      "solicitudCrearPagareServiceDTO",
+      crearPagare
+    );
+    //el xml se envia al proxy
+    console.log(xml);
+    return xml;
   }
 }
