@@ -12,9 +12,9 @@ export class DecevalGatewayRoutes {
 
     router.post(`/creargirador`, decevalgatewayController.createGirador);
     router.post('/consultargirador',decevalgatewayController.consultGirador);
-    
 
     router.post(`/signpayment`, decevalgatewayController.signPaymentAgreements);
+    router.post(`/pagaresfirmados`,decevalgatewayController.pagaresFirmados );
 
     router.post(`/blindsing`, );
 

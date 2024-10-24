@@ -4,6 +4,7 @@ import {
   ConsultPaymentDTO,
   CrearGiradorDTO,
   HeaderDTO,
+  SolicitudPagaresFirmadosDTO,
 } from "../domain";
 import { SolicitudCrearGiradorDTO } from "../domain/dtos/giradores/solicitudCrearGirador.DTO";
 import { SolicitudCrearPagareDTO } from "../domain/dtos/pagares/solicitudCrearPagare.DTO";
@@ -11,19 +12,16 @@ import { SolicitudCrearPagareDTO } from "../domain/dtos/pagares/solicitudCrearPa
 export class DecevalGatewayService {
   constructor() {}
 
-
-
   ///se cambiara los metodos
   async crearGirador(
     headerDTO: HeaderDTO,
     crearGiradorDTO: CrearGiradorDTO
   ): Promise<string> {
-  
     const [error, solicitudCrearGirador] = SolicitudCrearGiradorDTO.create({
       headerDTO,
       crearGiradorDTO,
     });
-    if (error) return `error faltan campos ${error}`;
+    if (error) return `error ${error}`;
 
     const xml = XMLAdapter.jsonToXml(
       "solicitudCrearGiradorServiceDTO",
@@ -32,9 +30,12 @@ export class DecevalGatewayService {
     console.log(xml); // se debera mandar este objeto al proxy y esperar la respuesta
     return xml;
   }
-  async consultGirador(consultgiradorDTO: ConsultaGiradorServiceDTO): Promise<string> {
-    const [error, consultGirador] = ConsultaGiradorServiceDTO.create(consultgiradorDTO);
-    if (error) return `error faltan campos ${error}`;
+  async consultGirador(
+    consultgiradorDTO: ConsultaGiradorServiceDTO
+  ): Promise<string> {
+    const [error, consultGirador] =
+      ConsultaGiradorServiceDTO.create(consultgiradorDTO);
+    if (error) return `error  ${error}`;
 
     const xml = XMLAdapter.jsonToXml(
       "consultaGiradorServiceDTO",
@@ -49,7 +50,7 @@ export class DecevalGatewayService {
     consultPaymentDTO: ConsultPaymentDTO
   ): Promise<string> {
     const [error, consultPayment] = ConsultPaymentDTO.create(consultPaymentDTO);
-    if (error) return "error faltan campos";
+    if (error) return `error  ${error}`;
 
     const xml = XMLAdapter.jsonToXml(
       "consultaPagareServiceDTO",
@@ -61,7 +62,7 @@ export class DecevalGatewayService {
   }
   async infoCertificate(payload: any) {
     const [error, consultPayment] = ConsultPaymentDTO.create(payload);
-    if (error) return `error faltan campos ${error}`;
+    if (error) return `error  ${error}`;
 
     const xml = XMLAdapter.jsonToXml(
       "consultaPagareServiceDTO",
@@ -74,11 +75,24 @@ export class DecevalGatewayService {
 
   async onSignPaymentAgreements(payload: any) {
     const [error, crearPagare] = SolicitudCrearPagareDTO.create(payload);
-    if (error) return `error faltan campos ${error}`;
+    if (error) return `error  ${error}`;
 
     const xml = XMLAdapter.jsonToXml(
       "solicitudCrearPagareServiceDTO",
       crearPagare
+    );
+    //el xml se envia al proxy
+    console.log(xml);
+    return xml;
+  }
+  async consultarPagare(payload: any) {
+    const [error, consultarPagare] =
+      SolicitudPagaresFirmadosDTO.create(payload);
+    if (error) return `error  ${error}`;
+
+    const xml = XMLAdapter.jsonToXml(
+      "solicitudPagaresFirmadosDTO",
+      consultarPagare
     );
     //el xml se envia al proxy
     console.log(xml);

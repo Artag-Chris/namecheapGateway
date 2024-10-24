@@ -11,6 +11,7 @@ export class SolicitudCrearPagareDTO {
     [key: string]: any;
   }): [string?, SolicitudCrearPagareDTO?] {
     const { header, crearPagareDTO } = object;
+    
     if (!header) return ["El Header es requerido"];
     if (!crearPagareDTO) return ["El Crear Pagare es requerido"];
     const { codigoDepositante, fecha, hora, usuario } = header;

@@ -54,4 +54,11 @@ export class DecevalGatewayController {
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
+  pagaresFirmados = async (req: Request, res: Response) => {
+    const payload = req.body;
+    await this.decevalGatewayService
+      .consultarPagare(payload)
+      .then((result) => res.json(result))
+      .catch((error) => this.handleError(error, res));
+  };
 }
