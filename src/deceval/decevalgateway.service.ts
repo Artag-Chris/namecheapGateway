@@ -1,7 +1,7 @@
 import XMLAdapter from "../config/adapters/js2xmlparser.adapter";
 import {
   ConsultaGiradorServiceDTO,
-  ConsultPaymentDTO,
+  ConsultaPagareServiceDTO,
   CrearGiradorDTO,
   HeaderDTO,
   SolicitudPagaresFirmadosDTO,
@@ -47,9 +47,9 @@ export class DecevalGatewayService {
   }
 
   async retrieveCertificate(
-    consultPaymentDTO: ConsultPaymentDTO
+    consultaPaymentDTO: ConsultaPagareServiceDTO
   ): Promise<string> {
-    const [error, consultPayment] = ConsultPaymentDTO.create(consultPaymentDTO);
+    const [error, consultPayment] = ConsultaPagareServiceDTO.create(consultaPaymentDTO);
     if (error) return `error  ${error}`;
 
     const xml = XMLAdapter.jsonToXml(
@@ -61,7 +61,7 @@ export class DecevalGatewayService {
     return xml;
   }
   async infoCertificate(payload: any) {
-    const [error, consultPayment] = ConsultPaymentDTO.create(payload);
+    const [error, consultPayment] = ConsultaPagareServiceDTO.create(payload);
     if (error) return `error  ${error}`;
 
     const xml = XMLAdapter.jsonToXml(

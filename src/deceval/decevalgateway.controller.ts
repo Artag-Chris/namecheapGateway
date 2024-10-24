@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { DecevalGatewayService } from "./decevalgateway.service";
-import { ConsultPaymentDTO, CustomError } from "../domain";
+import { CustomError } from "../domain";
 
 export class DecevalGatewayController {
   constructor(

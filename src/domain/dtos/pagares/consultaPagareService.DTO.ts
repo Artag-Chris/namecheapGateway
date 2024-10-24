@@ -1,4 +1,4 @@
-export class ConsultPaymentDTO {
+export class ConsultaPagareServiceDTO {
     constructor(
         public readonly codigoDeceval:                number,
         public readonly idEstadoPagare:               number,
@@ -7,7 +7,7 @@ export class ConsultPaymentDTO {
         public readonly numPagareEntidad:             string,
     ){}
   
-  static create(object:{[key:string]:any}):[string?,ConsultPaymentDTO?] {
+  static create(object:{[key:string]:any}):[string?,ConsultaPagareServiceDTO?] {
 
     if(!object) return ["El Objeto es requerido"];
     const {codigoDeceval,idEstadoPagare,idTipoIdentificacionFirmante,numIdentificacionFirmante,numPagareEntidad} = object
@@ -18,7 +18,7 @@ export class ConsultPaymentDTO {
     if(!numIdentificacionFirmante) return ["El Num Identificacion Firmante es requerido"];
     if(!numPagareEntidad) return ["El Num Pagare Entidad es requerido"];
 
-    return [undefined,new ConsultPaymentDTO(codigoDeceval,idEstadoPagare,idTipoIdentificacionFirmante,numIdentificacionFirmante,numPagareEntidad)]
+    return [undefined,new ConsultaPagareServiceDTO(codigoDeceval,idEstadoPagare,idTipoIdentificacionFirmante,numIdentificacionFirmante,numPagareEntidad)]
   }
 
 }
