@@ -157,28 +157,65 @@ export class DecevalGatewayService {
 
  
 
-  async consultarPagare(payload: any) {
-    const [error, consultarPagare] =
-      SolicitudPagaresFirmadosDTO.create(payload);
-    if (error) return `error  ${String(error)}`;
+  async consultarPagares(
+    headerDTO: HeaderDTO,
+    consultaPagareServiceDTO: ConsultaPagareServiceDTO
+  ): Promise<any> {
+    const currentDateTime = new Date().toISOString().split('.')[0]; // YYYY-MM-DDTHH:MM:SS format
+    const currentTime = new Date().toISOString().split('T')[1].split('.')[0]; // HH:MM:SS format
 
-    const xml = XMLAdapter.jsonToXml(
-      "solicitudPagaresFirmadosDTO",
-      consultarPagare,
-      { declaration: { include: false }, format: { doubleQuotes: true } }
-    );
-    const namespacedXml = `<solicitudPagaresFirmadosDTO xmlns="http://services.proxy.deceval.com/">${xml}</solicitudPagaresFirmadosDTO>`;
-    console.log(namespacedXml); // el xml se envia al proxy
+    const soapEnvelope = `
+      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.proxy.deceval.com/">
+        <soapenv:Header/>
+        <soapenv:Body>
+          <ser:consultarPagares>
+            <arg0>
+              <consultaPagareServiceDTO>
+                <idTipoIdentificacionFirmante>${consultaPagareServiceDTO.idTipoIdentificacionFirmante}</idTipoIdentificacionFirmante>
+                <numIdentificacionFirmante>${consultaPagareServiceDTO.numIdentificacionFirmante}</numIdentificacionFirmante>
+              </consultaPagareServiceDTO>
+              <header>
+                <codigoDepositante>${headerDTO.codigoDepositante}</codigoDepositante>
+                <fecha>${headerDTO.fecha}</fecha>
+                <hora>${headerDTO.hora}</hora>
+                <usuario>${headerDTO.usuario}</usuario>
+              </header>
+            </arg0>
+          </ser:consultarPagares>
+        </soapenv:Body>
+      </soapenv:Envelope>
+    `;
+
+    console.log("SOAP Envelope:", soapEnvelope); // Imprimir el XML en la consola para depuración
 
     try {
       // Enviar el XML al proxy
-      const response = await axios.post('https://decevalproxy.finova.com.co/services/ProxyServicesImplPort', namespacedXml, {
-        headers: { 'Content-Type': 'application/xml' },
+      const response = await axios.post('http://201.236.243.161:9000/SDLProxy/services/ProxyServicesImplPort?wsdl', soapEnvelope, {
+        headers: { 'Content-Type': 'text/xml' },
         httpsAgent
       });
-      return response.data;
+
+      // Convertir la respuesta XML a JSON
+      const jsonResponse = await parseStringPromise(response.data);
+
+      // Agregar nuevos campos al JSON
+      jsonResponse.newField1 = 'value1';
+      jsonResponse.newField2 = 'value2';
+
+      console.log(jsonResponse); // Imprimir la respuesta JSON en la consola para depuración
+      return jsonResponse;
+
     } catch (error) {
-      console.error('Error al comunicarse con el proxy:', error);
+      if (axios.isAxiosError(error)) {
+        console.error('Error al comunicarse con el proxy:', {
+          message: error.message,
+          code: error.code,
+          response: error.response?.data,
+          config: error.config,
+        });
+      } else {
+        console.error('Error desconocido:', error);
+      }
       throw new Error(`Error al comunicarse con el proxy: ${String(error)}`);
     }
   }

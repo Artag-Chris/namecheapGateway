@@ -15,7 +15,7 @@ export class DecevalGatewayRoutes {
     router.post(`/consultargirador`, decevalgatewayController.consultGirador);
     
     router.post(`/pagaresfirmados`, decevalgatewayController.pagaresFirmados);
-    router.post(`/retrieveCertificates`, decevalgatewayController.retrieveCertificate);
+    
     
 
     // Nueva ruta para crear pagaré

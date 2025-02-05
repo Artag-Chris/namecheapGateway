@@ -33,19 +33,13 @@ export class DecevalGatewayController {
       .catch((error) => this.handleError(error, res));
   };
 
-  retrieveCertificate = async (req: Request, res: Response) => {
-    const payload = req.body;
-    await this.decevalGatewayService
-      .retrieveCertificate(payload)
-      .then((result) => res.json(result))
-      .catch((error) => this.handleError(error, res));
-  };
 
 
   pagaresFirmados = async (req: Request, res: Response) => {
     const payload = req.body;
+    const { headerDTO, consultaPagareServiceDTO } = payload;
     await this.decevalGatewayService
-      .consultarPagare(payload)
+      .consultarPagares(headerDTO,consultaPagareServiceDTO)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
