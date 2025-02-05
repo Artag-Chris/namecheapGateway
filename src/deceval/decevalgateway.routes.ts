@@ -13,10 +13,10 @@ export class DecevalGatewayRoutes {
 
     router.post(`/creargirador`, decevalgatewayController.createGirador);
     router.post(`/consultargirador`, decevalgatewayController.consultGirador);
-    router.post(`/signpayment`, decevalgatewayController.signPaymentAgreements);
+    
     router.post(`/pagaresfirmados`, decevalgatewayController.pagaresFirmados);
     router.post(`/retrieveCertificates`, decevalgatewayController.retrieveCertificate);
-    router.post(`/infocertificate`, decevalgatewayController.infoCertificate);
+    
 
     // Nueva ruta para crear pagaré
     router.post(`/crearpagare`, decevalgatewayController.createPagare);

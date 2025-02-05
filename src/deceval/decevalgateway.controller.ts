@@ -41,21 +41,6 @@ export class DecevalGatewayController {
       .catch((error) => this.handleError(error, res));
   };
 
-  infoCertificate = async (req: Request, res: Response) => {
-    const payload = req.body;
-    await this.decevalGatewayService
-      .infoCertificate(payload)
-      .then((result) => res.json(result))
-      .catch((error) => this.handleError(error, res));
-  };
-
-  signPaymentAgreements = async (req: Request, res: Response) => {
-    const payload = req.body;
-    await this.decevalGatewayService
-      .onSignPaymentAgreements(payload)
-      .then((result) => res.json(result))
-      .catch((error) => this.handleError(error, res));
-  };
 
   pagaresFirmados = async (req: Request, res: Response) => {
     const payload = req.body;

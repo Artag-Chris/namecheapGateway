@@ -7,7 +7,7 @@ import {
   SolicitudPagaresFirmadosDTO,
   DocumentoPagareServiceDTO,
 } from "../domain";
-import { SolicitudCrearPagareDTO } from "../domain/dtos/pagares/solicitudCrearPagare.DTO";
+
 import https from 'https';
 import axios from "axios";
 import { parseStringPromise } from 'xml2js';
@@ -153,56 +153,9 @@ export class DecevalGatewayService {
       throw new Error(`Error al comunicarse con el proxy: ${String(error)}`);
     }
   }
+ 
 
-  async infoCertificate(payload: any) {
-    const [error, consultPayment] = ConsultaPagareServiceDTO.create(payload);
-    if (error) return `error  ${String(error)}`;
-
-    const xml = XMLAdapter.jsonToXml(
-      "consultaPagareServiceDTO",
-      consultPayment,
-      { declaration: { include: false }, format: { doubleQuotes: true } }
-    );
-    const namespacedXml = `<consultaPagareServiceDTO xmlns="http://services.proxy.deceval.com/">${xml}</consultaPagareServiceDTO>`;
-    console.log(namespacedXml); // el xml se envia al proxy
-
-    try {
-      // Enviar el XML al proxy
-      const response = await axios.post('https://decevalproxy.finova.com.co/services/ProxyServicesImplPort', namespacedXml, {
-        headers: { 'Content-Type': 'application/xml' },
-        httpsAgent
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error al comunicarse con el proxy:', error);
-      throw new Error(`Error al comunicarse con el proxy: ${String(error)}`);
-    }
-  }
-
-  async onSignPaymentAgreements(payload: any) {
-    const [error, crearPagare] = SolicitudCrearPagareDTO.create(payload);
-    if (error) return `error  ${String(error)}`;
-
-    const xml = XMLAdapter.jsonToXml(
-      "solicitudCrearPagareServiceDTO",
-      crearPagare,
-      { declaration: { include: false }, format: { doubleQuotes: true } }
-    );
-    const namespacedXml = `<solicitudCrearPagareServiceDTO xmlns="http://services.proxy.deceval.com/">${xml}</solicitudCrearPagareServiceDTO>`;
-    console.log(namespacedXml); // el xml se envia al proxy
-
-    try {
-      // Enviar el XML al proxy
-      const response = await axios.post('https://decevalproxy.finova.com.co/services/ProxyServicesImplPort', namespacedXml, {
-        headers: { 'Content-Type': 'application/xml' },
-        httpsAgent
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error al comunicarse con el proxy:', error);
-      throw new Error(`Error al comunicarse con el proxy: ${String(error)}`);
-    }
-  }
+ 
 
   async consultarPagare(payload: any) {
     const [error, consultarPagare] =
