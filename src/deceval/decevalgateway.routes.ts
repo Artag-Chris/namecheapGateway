@@ -16,7 +16,7 @@ export class DecevalGatewayRoutes {
     
     router.post(`/pagaresfirmados`, decevalgatewayController.pagaresFirmados);
     
-    
+     
 
     // Nueva ruta para crear pagaré
     router.post(`/crearpagare`, decevalgatewayController.createPagare);
