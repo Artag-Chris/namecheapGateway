@@ -68,10 +68,10 @@ export class DecevalGatewayController {
   // Nuevo método para crear pagaré
   createPagare = async (req: Request, res: Response) => {
     const payload = req.body;
-   // console.log(payload);
-    const { header,documentoPagare } = payload;
+   
+    const { headerDTO,documentoPagareServiceDTO } = payload;
     this.decevalGatewayService
-      .crearPagare(header, documentoPagare)
+      .crearPagare(headerDTO, documentoPagareServiceDTO)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
