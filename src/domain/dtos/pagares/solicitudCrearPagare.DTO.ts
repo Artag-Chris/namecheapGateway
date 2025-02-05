@@ -4,62 +4,56 @@ import { CrearPagareDTO } from "./crearPagare.DTO";
 export class SolicitudCrearPagareDTO {
   constructor(
     public readonly headerDTO: HeaderDTO,
-    public readonly crearPagareDTO: CrearPagareDTO[]
+    public readonly crearPagareDTO: CrearPagareDTO
   ) {}
 
   static create(object: {
     [key: string]: any;
   }): [string?, SolicitudCrearPagareDTO?] {
-    const { header, crearPagareDTO } = object;
-    
-    if (!header) return ["El Header es requerido"];
-    if (!crearPagareDTO) return ["El Crear Pagare es requerido"];
-    const { codigoDepositante, fecha, hora, usuario } = header;
+    const { headerDTO, crearPagareDTO } = object;
 
-    if (!codigoDepositante) return ["El Codigo Depositante es requerido"];
-    if (!fecha) return ["La Fecha es requerido"];
-    if (!hora) return ["La Hora es requerido"];
-    if (!usuario) return ["El Usuario es requerido"];
+    if (!headerDTO) return ["El Header es requerido"];
+    if (!crearPagareDTO) return ["El Crear Pagare es requerido"];
+
+    const { transactionId, timestamp, userId, channelId } = headerDTO;
+
+    if (!transactionId) return ["El Transaction ID es requerido"];
+    if (!timestamp) return ["El Timestamp es requerido"];
+    if (!userId) return ["El User ID es requerido"];
+    if (!channelId) return ["El Channel ID es requerido"];
 
     const {
-      apoderadoCuenta,
-      apoderadoNumId,
-      apoderadoTipoId,
-      cuenta,
-      departamento,
-      empresaOtorgante,
-      fechaGrabacionPagare,
-      idDocumentoPagare,
-      nitEmisor,
-      numPagareEntidad,
-      numReferencia,
-      otorganteNumId,
-      otorganteTipoId,
-      pais,
-      regional,
-      textoAdicional,
-      tipoPagare,
+      pagareId,
+      amount,
+      currency,
+      dueDate,
+      debtor,
+      creditor
     } = crearPagareDTO;
 
-    if (!apoderadoCuenta) return ["El Apoderado Cuenta es requerido"];
-    if (!apoderadoNumId) return ["El Apoderado Num Id es requerido"];
-    if (!apoderadoTipoId) return ["El Apoderado Tipo Id es requerido"];
-    if (!cuenta) return ["La Cuenta es requerido"];
-    if (!departamento) return ["El Departamento es requerido"];
-    if (!empresaOtorgante) return ["El Empresa Otorgante es requerido"];
-    if (!fechaGrabacionPagare)
-      return ["La Fecha Grabacion Pagare es requerido"];
-    if (!idDocumentoPagare) return ["El Id Documento Pagare es requerido"];
-    if (!nitEmisor) return ["El Nit Emisor es requerido"];
-    if (!numPagareEntidad) return ["El Num Pagare Entidad es requerido"];
-    if (!numReferencia) return ["El Num Referencia es requerido"];
-    if (!otorganteNumId) return ["El Otorgante Num Id es requerido"];
-    if (!otorganteTipoId) return ["El Otorgante Tipo Id es requerido"];
-    if (!pais) return ["El Pais es requerido"];
-    if (!regional) return ["El Regional es requerido"];
-    if (!textoAdicional) return ["El Texto Adicional es requerido"];
-    if (!tipoPagare) return ["El Tipo Pagare es requerido"];
+    if (!pagareId) return ["El Pagare ID es requerido"];
+    if (!amount) return ["El Amount es requerido"];
+    if (!currency) return ["El Currency es requerido"];
+    if (!dueDate) return ["El Due Date es requerido"];
 
-    return [undefined, new SolicitudCrearPagareDTO(header, [crearPagareDTO])];
+    if (!debtor) return ["El Debtor es requerido"];
+    const { idType: debtorIdType, idNumber: debtorIdNumber, name: debtorName, address: debtorAddress, city: debtorCity, country: debtorCountry } = debtor;
+    if (!debtorIdType) return ["El Debtor ID Type es requerido"];
+    if (!debtorIdNumber) return ["El Debtor ID Number es requerido"];
+    if (!debtorName) return ["El Debtor Name es requerido"];
+    if (!debtorAddress) return ["El Debtor Address es requerido"];
+    if (!debtorCity) return ["El Debtor City es requerido"];
+    if (!debtorCountry) return ["El Debtor Country es requerido"];
+
+    if (!creditor) return ["El Creditor es requerido"];
+    const { idType: creditorIdType, idNumber: creditorIdNumber, name: creditorName, address: creditorAddress, city: creditorCity, country: creditorCountry } = creditor;
+    if (!creditorIdType) return ["El Creditor ID Type es requerido"];
+    if (!creditorIdNumber) return ["El Creditor ID Number es requerido"];
+    if (!creditorName) return ["El Creditor Name es requerido"];
+    if (!creditorAddress) return ["El Creditor Address es requerido"];
+    if (!creditorCity) return ["El Creditor City es requerido"];
+    if (!creditorCountry) return ["El Creditor Country es requerido"];
+
+    return [undefined, new SolicitudCrearPagareDTO(headerDTO, crearPagareDTO)];
   }
 }

@@ -1,0 +1,380 @@
+<xs:schema xmlns:ns1="http://deceval.com/sdl/services/" xmlns:ns2="http://deceval.com/mrc/solicitud/model/"
+           xmlns:tns="http://services.proxy.deceval.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="unqualified" targetNamespace="http://services.proxy.deceval.com/" version="1.0">
+
+    <xs:import namespace="http://deceval.com/sdl/services/" schemaLocation="proxyservicesimpl_schema3.xsd"/>
+
+    <xs:import namespace="http://deceval.com/mrc/solicitud/model/" schemaLocation="proxyservicesimpl_schema1.xsd"/>
+
+    <xs:element name="anulacionPagares" type="tns:anulacionPagares"/>
+
+    <xs:element name="anulacionPagaresResponse" type="tns:anulacionPagaresResponse"/>
+
+    <xs:element name="cambiarEstadoProvisionalADefinitivo" type="tns:cambiarEstadoProvisionalADefinitivo"/>
+
+    <xs:element name="cambiarEstadoProvisionalADefinitivoResponse"
+                type="tns:cambiarEstadoProvisionalADefinitivoResponse"/>
+
+    <xs:element name="cancelacionPagares" type="tns:cancelacionPagares"/>
+
+    <xs:element name="cancelacionPagaresResponse" type="tns:cancelacionPagaresResponse"/>
+
+    <xs:element name="consultaPagareXML" type="tns:consultaPagareXML"/>
+
+    <xs:element name="consultaPagareXMLResponse" type="tns:consultaPagareXMLResponse"/>
+
+    <xs:element name="consultarPagares" type="tns:consultarPagares"/>
+
+    <xs:element name="consultarPagaresNopdf" type="tns:consultarPagaresNopdf"/>
+
+    <xs:element name="consultarPagaresNopdfResponse" type="tns:consultarPagaresNopdfResponse"/>
+
+    <xs:element name="consultarPagaresResponse" type="tns:consultarPagaresResponse"/>
+
+    <xs:element name="creacionGiradores" type="tns:creacionGiradores"/>
+
+    <xs:element name="creacionGiradoresCodificados" type="tns:creacionGiradoresCodificados"/>
+
+    <xs:element name="creacionGiradoresCodificadosResponse" type="tns:creacionGiradoresCodificadosResponse"/>
+
+    <xs:element name="creacionGiradoresResponse" type="tns:creacionGiradoresResponse"/>
+
+    <xs:element name="creacionPagares" type="tns:creacionPagares"/>
+
+    <xs:element name="creacionPagaresCodificado" type="tns:creacionPagaresCodificado"/>
+
+    <xs:element name="creacionPagaresCodificadoResponse" type="tns:creacionPagaresCodificadoResponse"/>
+
+    <xs:element name="creacionPagaresFisicosCodificado" type="tns:creacionPagaresFisicosCodificado"/>
+
+    <xs:element name="creacionPagaresFisicosCodificadoResponse" type="tns:creacionPagaresFisicosCodificadoResponse"/>
+
+    <xs:element name="creacionPagaresResponse" type="tns:creacionPagaresResponse"/>
+
+    <xs:element name="crearCertificadoFirma" type="tns:crearCertificadoFirma"/>
+
+    <xs:element name="crearCertificadoFirmaResponse" type="tns:crearCertificadoFirmaResponse"/>
+
+    <xs:element name="firmarPagareCaracteres" type="tns:firmarPagareCaracteres"/>
+
+    <xs:element name="firmarPagareCaracteresResponse" type="tns:firmarPagareCaracteresResponse"/>
+
+    <xs:element name="firmarPagareConCertificado" type="tns:firmarPagareConCertificado"/>
+
+    <xs:element name="firmarPagareConCertificadoResponse" type="tns:firmarPagareConCertificadoResponse"/>
+
+    <xs:element name="firmarPagares" type="tns:firmarPagares"/>
+
+    <xs:element name="firmarPagaresAsincrono" type="tns:firmarPagaresAsincrono"/>
+
+    <xs:element name="firmarPagaresAsincronoResponse" type="tns:firmarPagaresAsincronoResponse"/>
+
+    <xs:element name="firmarPagaresResponse" type="tns:firmarPagaresResponse"/>
+
+    <xs:element name="generacionMasivaCertificados" type="tns:generacionMasivaCertificados"/>
+
+    <xs:element name="generacionMasivaCertificadosResponse" type="tns:generacionMasivaCertificadosResponse"/>
+
+    <xs:element name="generarToken" type="tns:generarToken"/>
+
+    <xs:element name="generarTokenResponse" type="tns:generarTokenResponse"/>
+
+    <xs:element name="notificacionDesembolsoAnotacionEnCuenta" type="tns:notificacionDesembolsoAnotacionEnCuenta"/>
+
+    <xs:element name="notificacionDesembolsoAnotacionEnCuentaResponse"
+                type="tns:notificacionDesembolsoAnotacionEnCuentaResponse"/>
+
+    <xs:element name="notificacionPagaresFirmados" type="tns:notificacionPagaresFirmados"/>
+
+    <xs:element name="notificacionPagaresFirmadosResponse" type="tns:notificacionPagaresFirmadosResponse"/>
+
+    <xs:element name="registrarAmortizacion" type="tns:registrarAmortizacion"/>
+
+    <xs:element name="registrarAmortizacionResponse" type="tns:registrarAmortizacionResponse"/>
+
+    <xs:element name="registrarCustodiaPagare" type="tns:registrarCustodiaPagare"/>
+
+    <xs:element name="registrarCustodiaPagareResponse" type="tns:registrarCustodiaPagareResponse"/>
+
+    <xs:element name="solicitudRadicacionFichaTecnicaNatural" type="tns:solicitudRadicacionFichaTecnicaNatural"/>
+
+    <xs:element name="solicitudRadicacionFichaTecnicaNaturalResponse"
+                type="tns:solicitudRadicacionFichaTecnicaNaturalResponse"/>
+
+    <xs:complexType name="crearCertificadoFirma">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudCertificadoFirmaPDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="crearCertificadoFirmaResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaCrearCertificadoFirmaDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cancelacionPagares">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudCancelacionPagaresServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cancelacionPagaresResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaCancelacionPagaresServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="notificacionPagaresFirmados">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudPagaresFirmadosDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="notificacionPagaresFirmadosResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaPagaresFirmadosDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionPagaresCodificado">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudCrearPagareDaneServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionPagaresCodificadoResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaDocumentoPagareDaneServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="notificacionDesembolsoAnotacionEnCuenta">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudDesembolsoAnotarCuentaDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="notificacionDesembolsoAnotacionEnCuentaResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaDesembolsoAnotarCuentaDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionPagaresFisicosCodificado">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudCrearPagareDaneServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionPagaresFisicosCodificadoResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaDocumentoPagareDaneServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultarPagares">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudConsultarPagareDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultarPagaresResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaConsultarPagaresDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="firmarPagares">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudFirmarPagaresDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="firmarPagaresResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaFirmarPagaresDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="solicitudRadicacionFichaTecnicaNatural">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:radicacionSolicitudRequestNatural"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="solicitudRadicacionFichaTecnicaNaturalResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaRadicacionErrorDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultaPagareXML">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudConsultaPagareServiceXMLDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultaPagareXMLResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaConsultaPagareXMLServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultarPagaresNopdf">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudConsultarPagareDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultarPagaresNopdfResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaConsultarPagaresNopdfDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="generacionMasivaCertificados">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudGeneracionMasivaCertificadosDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="generacionMasivaCertificadosResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaGeneracionMasivaCertificadosDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="registrarCustodiaPagare">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:registroFirmarPagaresXmlDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="registrarCustodiaPagareResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaFirmarPagaresXmlDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionGiradoresCodificados">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudCrearGiradorDaneServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionGiradoresCodificadosResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaCrearGiradorDaneServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="firmarPagareCaracteres">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudFirmarPagaresCaracteresDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="firmarPagareCaracteresResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaFirmarPagaresCodigoErrorDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionGiradores">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudCrearGiradorServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionGiradoresResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaCrearGiradorServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="firmarPagareConCertificado">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudFirmarPagaresConCertificadoDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="firmarPagareConCertificadoResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaFirmarPagaresDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="registrarAmortizacion">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudAmortizacionSaldosServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="registrarAmortizacionResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaAmortizacionSaldosServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="generarToken">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns2:InformacionPagareTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="generarTokenResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns2:InformacionFirmaPagareTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionPagares">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudCrearPagareServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="creacionPagaresResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaDocumentoPagareServiceDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="firmarPagaresAsincrono">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudFirmarPagaresDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="firmarPagaresAsincronoResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaFirmarPagaresAsincronoDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="anulacionPagares">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:solicitudAnulacionPagaresDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="anulacionPagaresResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaAnulacionPagaresDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cambiarEstadoProvisionalADefinitivo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" type="ns1:cambioEstadoPagareDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cambiarEstadoProvisionalADefinitivoResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:respuestaCambiarEstadoProvisionalADefinitivoDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

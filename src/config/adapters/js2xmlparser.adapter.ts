@@ -2,8 +2,8 @@ import * as js2xmlparser from 'js2xmlparser';
 import { parseString } from 'xml2js';
 
 class XMLAdapter {
-  public static jsonToXml( rootElement: string,json: any): string {
-    return js2xmlparser.parse(rootElement, json);
+  public static jsonToXml(rootElement: string, json: any, options?: js2xmlparser.IOptions): string {
+    return js2xmlparser.parse(rootElement, json, options);
   }
 
   public static xmlToJson(xml: string): Promise<any> {

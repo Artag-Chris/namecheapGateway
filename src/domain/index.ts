@@ -17,3 +17,4 @@ export * from './dtos/pagares/solicitudPagaresFirmados.DTO';
 
 export * from './dtos/giradores/solicitudCrearGirador.DTO';
 
+export * from './dtos/pagares/DocumentoPagareService.DTO'

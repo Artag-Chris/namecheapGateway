@@ -11,42 +11,44 @@ export class DecevalGatewayController {
     if (error instanceof CustomError) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-
     return res.status(500).json({ error: `Internal Server Error` });
   };
-  //zona girador
+
+  // Métodos del controlador
   createGirador = async (req: Request, res: Response) => {
-   const payload = req.body;
-   //console.log(payload);
+    const payload = req.body;
     const { header, crearGiradorDTO } = payload;
     this.decevalGatewayService
-      .crearGirador(header,crearGiradorDTO)
+      .crearGirador(header, crearGiradorDTO)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
+ 
+
   consultGirador = async (req: Request, res: Response) => {
     const payload = req.body;
     await this.decevalGatewayService
-      .consultGirador(payload!)
+      .consultGirador(payload)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
-  //zona certificado
+
   retrieveCertificate = async (req: Request, res: Response) => {
     const payload = req.body;
     await this.decevalGatewayService
-      .retrieveCertificate(payload!)
+      .retrieveCertificate(payload)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
+
   infoCertificate = async (req: Request, res: Response) => {
     const payload = req.body;
     await this.decevalGatewayService
-      .infoCertificate(payload!)
+      .infoCertificate(payload)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
-  }
-  //zona acuerdos de pago
+  };
+
   signPaymentAgreements = async (req: Request, res: Response) => {
     const payload = req.body;
     await this.decevalGatewayService
@@ -54,10 +56,22 @@ export class DecevalGatewayController {
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
+
   pagaresFirmados = async (req: Request, res: Response) => {
     const payload = req.body;
     await this.decevalGatewayService
       .consultarPagare(payload)
+      .then((result) => res.json(result))
+      .catch((error) => this.handleError(error, res));
+  };
+
+  // Nuevo método para crear pagaré
+  createPagare = async (req: Request, res: Response) => {
+    const payload = req.body;
+   // console.log(payload);
+    const { header,documentoPagare } = payload;
+    this.decevalGatewayService
+      .crearPagare(header, documentoPagare)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
