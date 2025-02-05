@@ -22,109 +22,62 @@ export class DecevalGatewayService {
   constructor() { }
 
   
-  
   async crearGirador(
     headerDTO: HeaderDTO,
-    crearGiradorDTO: CrearGiradorDTO[]
+    crearGiradorDTO: CrearGiradorDTO
   ): Promise<any> {
-    // const solicitudCrearGirador = {
-    //   header: headerDTO,
-    //   crearGiradorDTO: crearGiradorDTO
-    // };
-
-    // const headerXml = js2xmlparser.parse("header", headerDTO, {
-    //   declaration: { include: false },
-    //   format: { doubleQuotes: true }
-    // });
-
-    // const crearGiradorXml = crearGiradorDTO.map(girador => 
-    //   js2xmlparser.parse("crearGiradorDTO", girador, {
-    //     declaration: { include: false },
-    //     format: { doubleQuotes: true }
-    //   })
-    // ).join('');
-
     const soapEnvelope = `
-      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.proxy.deceval.com/">
         <soapenv:Header/>
         <soapenv:Body>
-          <ser:creacionGiradores xmlns:ser="http://services.proxy.deceval.com/">
+          <ser:creacionGiradoresCodificados>
             <arg0>
-              <header>
-                <codigoDepositante>123456789</codigoDepositante>
-                <fecha>2025-01-15T12:00:00Z</fecha>
-                <hora>12:00:00</hora>
-                <usuario>testUser</usuario>
-              </header>
               <crearGiradorDTO>
-                <direccion2PersonaGrupo_PGP>Address 2</direccion2PersonaGrupo_PGP>
-                <tiempoServicio>5 years</tiempoServicio>
-                <fkIdDepartamentoDomicilio_Nat>1</fkIdDepartamentoDomicilio_Nat>
-                <regitroSuper_Jur>Registro</regitroSuper_Jur>
-                <fax2PersonaGrupo_PGP>123456789</fax2PersonaGrupo_PGP>
-                <telefono3PersonaGrupo_PGP>123456789</telefono3PersonaGrupo_PGP>
-                <fkIdCiudad_Jur>1</fkIdCiudad_Jur>
-                <numeroDocumento>1234567890</numeroDocumento>
-                <fechaCamara_Jur>2020-01-01</fechaCamara_Jur>
-                <mensajeRespuesta>Aprobado</mensajeRespuesta>
-                <numeroCelular>1234567890</numeroCelular>
-                <fkIdPaisNacionalidad_Nat>1</fkIdPaisNacionalidad_Nat>
-                <fkIdClasePersona>1</fkIdClasePersona>
-                <fechaNacimiento_Nat>1990-01-01</fechaNacimiento_Nat>
-                <fkIdPaisCamara_Jur>1</fkIdPaisCamara_Jur>
-                <agenteAutoretenedor_Jur>1</agenteAutoretenedor_Jur>
-                <fkIdDepartamentoExpedicion_Nat>1</fkIdDepartamentoExpedicion_Nat>
-                <fkIdPais_Jur>1</fkIdPais_Jur>
-                <identificacionEmisor>1234567890</identificacionEmisor>
-                <direccion1PersonaGrupo_PGP>123 Main St</direccion1PersonaGrupo_PGP>
-                <fechaConstitucion_Jur>2020-01-01</fechaConstitucion_Jur>
-                <correoElectronico>john.doe@example.com</correoElectronico>
-                <libroNo_Jur>123</libroNo_Jur>
-                <fechaExpedicion_Nat>2020-01-01</fechaExpedicion_Nat>
-                <fkIdCiudadExpedicion_Nat>1</fkIdCiudadExpedicion_Nat>
-                <fkIdCiudadDomicilio_Nat>1</fkIdCiudadDomicilio_Nat>
-                <residente_Jur>1</residente_Jur>
-                <circuloNo_Jur>123</circuloNo_Jur>
-                <camaraComercioNo_Jur>123</camaraComercioNo_Jur>
-                <segundoApellido_Nat>Smith</segundoApellido_Nat>
-                <fkIdTipoDocumento>1</fkIdTipoDocumento>
-                <telefono2PersonaGrupo_PGP>123456789</telefono2PersonaGrupo_PGP>
-                <pensionado>0</pensionado>
-                <notariaNo_Jur>123</notariaNo_Jur>
-                <direccion3PersonaGrupo_PGP>Address 3</direccion3PersonaGrupo_PGP>
-                <fkIdDepartamento_Jur>1</fkIdDepartamento_Jur>
-                <cuentaGirador>123456789</cuentaGirador>
-                <fechaEscritura_Jur>2020-01-01</fechaEscritura_Jur>
-                <nombresNat_Nat>John</nombresNat_Nat>
-                <declarante_Jur>1</declarante_Jur>
-                <escrituraNo_Jur>123</escrituraNo_Jur>
-                <fax1PersonaGrupo_PGP>123456789</fax1PersonaGrupo_PGP>
-                <fkIdPaisExpedicion_Nat>1</fkIdPaisExpedicion_Nat>
-                <razonSocial_Jur>Empresa XYZ</razonSocial_Jur>
-                <salario>5000</salario>
-                <fax3PersonaGrupo_PGP>123456789</fax3PersonaGrupo_PGP>
-                <estadoCivil>Soltero</estadoCivil>
-                <fkIdPaisDomicilio_Nat>1</fkIdPaisDomicilio_Nat>
-                <fkIdCiudadCamara_Jur>1</fkIdCiudadCamara_Jur>
-                <fkIdDepartamentoCamara_Jur>1</fkIdDepartamentoCamara_Jur>
-                <telefono1PersonaGrupo_PGP>123456789</telefono1PersonaGrupo_PGP>
-                <primerApellido_Nat>Doe</primerApellido_Nat>
+                <identificacionEmisor>${crearGiradorDTO.identificacionEmisor}</identificacionEmisor>
+                <fkIdClasePersona>${crearGiradorDTO.fkIdClasePersona}</fkIdClasePersona>
+                <fkIdTipoDocumento>${crearGiradorDTO.fkIdTipoDocumento}</fkIdTipoDocumento>
+                <numeroDocumento>${crearGiradorDTO.numeroDocumento}</numeroDocumento>
+                <correoElectronico>${crearGiradorDTO.correoElectronico}</correoElectronico>
+                <direccion1PersonaGrupo_PGP>${crearGiradorDTO.direccion1PersonaGrupo_PGP}</direccion1PersonaGrupo_PGP>
+                <telefono1PersonaGrupo_PGP>${crearGiradorDTO.telefono1PersonaGrupo_PGP}</telefono1PersonaGrupo_PGP>
+                <fax1PersonaGrupo_PGP>${crearGiradorDTO.fax1PersonaGrupo_PGP}</fax1PersonaGrupo_PGP>
+                <fkIdPaisExpedicion_Nat>${crearGiradorDTO.fkIdPaisExpedicion_Nat}</fkIdPaisExpedicion_Nat>
+                <fkIdDepartamentoExpedicion_Nat>${crearGiradorDTO.fkIdDepartamentoExpedicion_Nat}</fkIdDepartamentoExpedicion_Nat>
+                <fkIdCiudadExpedicion_Nat>${crearGiradorDTO.fkIdCiudadExpedicion_Nat}</fkIdCiudadExpedicion_Nat>
+                <fkIdPaisDomicilio_Nat>${crearGiradorDTO.fkIdPaisDomicilio_Nat}</fkIdPaisDomicilio_Nat>
+                <fkIdDepartamentoDomicilio_Nat>${crearGiradorDTO.fkIdDepartamentoDomicilio_Nat}</fkIdDepartamentoDomicilio_Nat>
+                <fkIdCiudadDomicilio_Nat>${crearGiradorDTO.fkIdCiudadDomicilio_Nat}</fkIdCiudadDomicilio_Nat>
+                <fechaExpedicion_Nat>${crearGiradorDTO.fechaExpedicion_Nat}</fechaExpedicion_Nat>
+                <fechaNacimiento_Nat>${crearGiradorDTO.fechaNacimiento_Nat}</fechaNacimiento_Nat>
+                <nombresNat_Nat>${crearGiradorDTO.nombresNat_Nat}</nombresNat_Nat>
+                <primerApellido_Nat>${crearGiradorDTO.primerApellido_Nat}</primerApellido_Nat>
+                <segundoApellido_Nat>${crearGiradorDTO.segundoApellido_Nat}</segundoApellido_Nat>
+                <fkIdPaisNacionalidad_Nat>${crearGiradorDTO.fkIdPaisNacionalidad_Nat}</fkIdPaisNacionalidad_Nat>
+                <mensajeRespuesta>${crearGiradorDTO.mensajeRespuesta}</mensajeRespuesta>
               </crearGiradorDTO>
+              <header>
+                <codigoDepositante>${headerDTO.codigoDepositante}</codigoDepositante>
+                <fecha>${headerDTO.fecha}</fecha>
+                <hora>${headerDTO.hora}</hora>
+                <usuario>${headerDTO.usuario}</usuario>
+              </header>
             </arg0>
-          </ser:creacionGiradores>
+          </ser:creacionGiradoresCodificados>
         </soapenv:Body>
       </soapenv:Envelope>
     `;
 
-    console.log(soapEnvelope); // Imprimir el XML en la consola para depuración
+    //console.log(soapEnvelope); // Imprimir el XML en la consola para depuración
 
     try {
       // Enviar el XML al proxy
-      const response = await axios.post('https://decevalproxy.finova.com.co/services/ProxyServicesImplPort', soapEnvelope, {
+      const response = await axios.post('http://201.236.243.161:9000/SDLProxy/services/ProxyServicesImplPort?wsdl', soapEnvelope, {
         headers: { 'Content-Type': 'text/xml' },
         httpsAgent
       });
+      return "ok"
       return response.data;
+
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error('Error al comunicarse con el proxy:', {
@@ -136,10 +89,11 @@ export class DecevalGatewayService {
       } else {
         console.error('Error desconocido:', error);
       }
-     // throw new Error(`Error al comunicarse con el proxy: ${String(error)}`);
+      throw new Error(`Error al comunicarse con el proxy: ${String(error)}`);
     }
   }
-    async consultGirador(
+
+      async consultGirador(
     consultgiradorDTO: ConsultaGiradorServiceDTO
   ): Promise<string> {
     const [error, consultGirador] =

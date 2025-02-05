@@ -17,9 +17,9 @@ export class DecevalGatewayController {
   // Métodos del controlador
   createGirador = async (req: Request, res: Response) => {
     const payload = req.body;
-    const { header, crearGiradorDTO } = payload;
+    const { headerDTO, crearGiradorDTO } = payload;
     this.decevalGatewayService
-      .crearGirador(header, crearGiradorDTO)
+      .crearGirador(headerDTO, crearGiradorDTO)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
