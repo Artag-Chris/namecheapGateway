@@ -9,7 +9,7 @@ export class DecevalGatewayRoutes {
     const decevalgatewayController = new DecevalGatewayController(decevalGatewayService);
 
     // Aquí irán las rutas de los servicios que usaremos de Deceval
-    // Organizar rutas
+    // Organizar rutas 
 
     router.post(`/creargirador`, decevalgatewayController.createGirador);
     router.post(`/consultargirador`, decevalgatewayController.consultGirador);
