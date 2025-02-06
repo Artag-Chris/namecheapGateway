@@ -336,3 +336,30 @@ export class DecevalGatewayService {
    </soapenv:Body>
 </soapenv:Envelope>
 */
+
+/*
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope 
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ser="http://deceval.com/sdl/services/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ser:crearCertificadoFirma>
+            <header>
+                <codigoDepositante>12345</codigoDepositante> codigo del que paga
+                <fecha>2024-03-20T10:30:00</fecha>
+                <hora>10:30</hora>
+                <usuario>hnarvaez</usuario>
+            </header>
+            <infoCertificadoFirmaDTO>
+                <clave>Prueba123*</clave> //Alfanúmérica. La llave con la cual se realiza la Firma del Pagaré. El tamaño minimo es 8 caracteres.
+                <idDocumentoPagare>PAGARE_123457</idDocumentoPagare> //Código asignado por DECEVAL al pagaré de la entidad
+                <idRolFirmante>5</idRolFirmante>
+                <motivo>Prueba de Firma</motivo>
+                <numeroDocumento>123456789</numeroDocumento>
+                <tipoDocumento>1</tipoDocumento>
+            </infoCertificadoFirmaDTO>
+        </ser:crearCertificadoFirma>
+    </soapenv:Body>
+</soapenv:Envelope>
+*/
