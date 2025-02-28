@@ -14,7 +14,7 @@ import { parseStringPromise } from 'xml2js';
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
-export class DecevalGatewayService {
+export class NameCheapGatewayService {
   constructor() { }
 
   

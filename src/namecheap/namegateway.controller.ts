@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { DecevalGatewayService } from "./decevalgateway.service";
+//import { DecevalGatewayService } from "./namecheapgateway.service";
 import { CustomError } from "../domain";
+import { NameCheapGatewayService } from "./namecheapgateway.service";
 
-export class DecevalGatewayController {
+export class NamecheapGatewayController {
   constructor(
-    private readonly decevalGatewayService = new DecevalGatewayService()
+    private readonly namecheapGatewayService = new NameCheapGatewayService()
   ) {}
 
   private handleError = (error: unknown, res: Response) => {
@@ -18,7 +19,7 @@ export class DecevalGatewayController {
   createGirador = async (req: Request, res: Response) => {
     const payload = req.body;
     const { headerDTO, crearGiradorDTO } = payload;
-    this.decevalGatewayService
+    this.namecheapGatewayService
       .crearGirador(headerDTO, crearGiradorDTO)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
@@ -27,7 +28,7 @@ export class DecevalGatewayController {
 
   consultGirador = async (req: Request, res: Response) => {
     const payload = req.body;
-    await this.decevalGatewayService
+    await this.namecheapGatewayService
       .consultGirador(payload)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
@@ -38,7 +39,7 @@ export class DecevalGatewayController {
   pagaresFirmados = async (req: Request, res: Response) => {
     const payload = req.body;
     const { headerDTO, consultaPagareServiceDTO } = payload;
-    await this.decevalGatewayService
+    await this.namecheapGatewayService
       .consultarPagares(headerDTO,consultaPagareServiceDTO)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
@@ -49,7 +50,7 @@ export class DecevalGatewayController {
     const payload = req.body;
    
     const { headerDTO,documentoPagareServiceDTO } = payload;
-    this.decevalGatewayService
+    this.namecheapGatewayService
       .crearPagare(headerDTO, documentoPagareServiceDTO)
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));

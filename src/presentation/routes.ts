@@ -1,15 +1,14 @@
 import { Router } from 'express';
-import { DecevalGatewayRoutes } from '../deceval/decevalgateway.routes';
+import { namecheapGatewayRoutes } from '../namecheap/namecheapgateway.routes';
+
 
 
 
 export class AppRoutes {
   static get routes(): Router {
     const router = Router();
-
-    
    
-    router.use(`/gateway/deceval`, DecevalGatewayRoutes.routes );
+    router.use(`/gateway/namecheap`, namecheapGatewayRoutes.routes );
 
     return router;
   }

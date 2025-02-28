@@ -36,7 +36,7 @@ export class Server {
     //* Routes
    // this.app.use(this.routes);
 
-    //* SPA /^\/(?!gateway).*/  <== Únicamente si no empieza con la palabra api
+    //* SPA /^\/(?!gateway).*/  <== Únicamente si no empieza con la palabra gateway
     this.app.get(/^\/(?!gateway).*/, (req, res) => {
       const indexPath = path.join(
         __dirname + `../../../${this.publicPath}/index.html`
