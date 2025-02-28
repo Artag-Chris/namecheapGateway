@@ -16,11 +16,11 @@ export class NamecheapGatewayController {
   };
 
   // Métodos del controlador
-  test = async (req: Request, res: Response) => {
+  getDomains = async (req: Request, res: Response) => {
     const payload = req.body;
     
     this.namecheapGatewayService
-      .testService()
+      .getDomains()
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
