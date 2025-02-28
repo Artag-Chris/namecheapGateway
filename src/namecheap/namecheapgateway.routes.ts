@@ -9,18 +9,7 @@ export class namecheapGatewayRoutes {
     const namecheapGatewayService = new NameCheapGatewayService();
     const namecheapgatewayController = new NamecheapGatewayController(namecheapGatewayService);
 
-    // Aquí irán las rutas de los servicios que usaremos de Deceval
-    // Organizar rutas 
-
-    router.post(`/creargirador`, namecheapgatewayController.createGirador);
-    router.post(`/consultargirador`, namecheapgatewayController.consultGirador);
-    
-    router.post(`/pagaresfirmados`, namecheapgatewayController.pagaresFirmados);
-    
-     
-
-    // Nueva ruta para crear pagaré
-    router.post(`/crearpagare`, namecheapgatewayController.createPagare);
+    router.post("/test", namecheapgatewayController.test);
 
     return router;
   }

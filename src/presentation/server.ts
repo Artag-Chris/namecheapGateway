@@ -33,8 +33,6 @@ export class Server {
     //* Public Folder
     this.app.use(express.static(this.publicPath));
 
-    //* Routes
-   // this.app.use(this.routes);
 
     //* SPA /^\/(?!gateway).*/  <== Únicamente si no empieza con la palabra gateway
     this.app.get(/^\/(?!gateway).*/, (req, res) => {

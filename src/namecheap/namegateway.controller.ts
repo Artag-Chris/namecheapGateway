@@ -16,43 +16,13 @@ export class NamecheapGatewayController {
   };
 
   // Métodos del controlador
-  createGirador = async (req: Request, res: Response) => {
+  test = async (req: Request, res: Response) => {
     const payload = req.body;
-    const { headerDTO, crearGiradorDTO } = payload;
+    
     this.namecheapGatewayService
-      .crearGirador(headerDTO, crearGiradorDTO)
+      .testService()
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
  
-
-  consultGirador = async (req: Request, res: Response) => {
-    const payload = req.body;
-    await this.namecheapGatewayService
-      .consultGirador(payload)
-      .then((result) => res.json(result))
-      .catch((error) => this.handleError(error, res));
-  };
-
-
-
-  pagaresFirmados = async (req: Request, res: Response) => {
-    const payload = req.body;
-    const { headerDTO, consultaPagareServiceDTO } = payload;
-    await this.namecheapGatewayService
-      .consultarPagares(headerDTO,consultaPagareServiceDTO)
-      .then((result) => res.json(result))
-      .catch((error) => this.handleError(error, res));
-  };
-
-  // Nuevo método para crear pagaré
-  createPagare = async (req: Request, res: Response) => {
-    const payload = req.body;
-   
-    const { headerDTO,documentoPagareServiceDTO } = payload;
-    this.namecheapGatewayService
-      .crearPagare(headerDTO, documentoPagareServiceDTO)
-      .then((result) => res.json(result))
-      .catch((error) => this.handleError(error, res));
-  };
 }
