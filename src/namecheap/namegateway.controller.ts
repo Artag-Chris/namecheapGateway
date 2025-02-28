@@ -17,12 +17,26 @@ export class NamecheapGatewayController {
 
   // Métodos del controlador
   getDomains = async (req: Request, res: Response) => {
-    const payload = req.body;
-    
+  
     this.namecheapGatewayService
       .getDomains()
       .then((result) => res.json(result))
       .catch((error) => this.handleError(error, res));
   };
+  getSubDomains = async (req: Request, res: Response) => {
+    const { domain } = req.params;
+    
+    this.namecheapGatewayService
+      .getSubDomains(domain)
+      .then((result) => res.json(result))
+      .catch((error) => this.handleError(error, res));
+  }; 
+  getDomainsWithDetails = async (req: Request, res: Response) => {
+    this.namecheapGatewayService
+      .getDomainsWithDetails()
+      .then((result) => res.json(result))
+      .catch((error) => this.handleError(error, res));
+  } 
+
  
 }

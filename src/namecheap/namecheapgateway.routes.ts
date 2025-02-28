@@ -9,7 +9,9 @@ export class namecheapGatewayRoutes {
     const namecheapGatewayService = new NameCheapGatewayService();
     const namecheapgatewayController = new NamecheapGatewayController(namecheapGatewayService);
 
-    router.get("/test", namecheapgatewayController.getDomains);
+    router.get("/dominios", namecheapgatewayController.getDomains);
+    router.get("/subdominios/:domain", namecheapgatewayController.getSubDomains);
+    router.get("/getalldomainsdata", namecheapgatewayController.getDomainsWithDetails);
 
     return router;
   }
