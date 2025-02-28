@@ -9,7 +9,7 @@ export class namecheapGatewayRoutes {
     const namecheapGatewayService = new NameCheapGatewayService();
     const namecheapgatewayController = new NamecheapGatewayController(namecheapGatewayService);
 
-    router.post("/test", namecheapgatewayController.test);
+    router.get("/test", namecheapgatewayController.test);
 
     return router;
   }
