@@ -4,7 +4,7 @@ import { NamecheapGatewayController } from "./namegateway.controller";
 
 
 export class namecheapGatewayRoutes {
-  static get routes() {
+  static get routes() {  
     const router = Router();
     const namecheapGatewayService = new NameCheapGatewayService();
     const namecheapgatewayController = new NamecheapGatewayController(namecheapGatewayService);
